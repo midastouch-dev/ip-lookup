@@ -20,4 +20,9 @@ export class LookupController {
   async updateIpInfo(@Param('ip') ip: string) {
     return this.lookupService.autoUpdateInfo(ip);
   }
+
+  @Get('/pause')
+  async pauseGetIPInfoAuto() {
+    await this.lookupService.removeAutoUpdate();
+  }
 }

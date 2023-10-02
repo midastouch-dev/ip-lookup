@@ -27,7 +27,7 @@ cd ip-lookup
 ```
 2. Run the docker image
 ```
-sudo docker compose ps -d
+sudo docker compose up -d
 ```
 
 Once the server is up-and-running, go to your browser, and visit http://localhost:4000 to use the app.

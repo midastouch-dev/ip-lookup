@@ -5,6 +5,12 @@ import { LookupServices } from './lookup.services';
 export class LookupController {
   constructor(private lookupService: LookupServices) {}
 
+  @Get('/pause')
+  async pauseGetIPInfoAuto() {
+    this.lookupService.removeAutoUpdate();
+    return 'success';
+  }
+
   @Get(':ip')
   async getIpInfo(@Param('ip') ip: string) {
     const info = await this.lookupService.getLookUp(ip);
@@ -19,10 +25,5 @@ export class LookupController {
   @Put(':ip')
   async updateIpInfo(@Param('ip') ip: string) {
     return this.lookupService.autoUpdateInfo(ip);
-  }
-
-  @Get('/pause')
-  async pauseGetIPInfoAuto() {
-    await this.lookupService.removeAutoUpdate();
   }
 }
